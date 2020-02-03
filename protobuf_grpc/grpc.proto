@@ -1,0 +1,32 @@
+	syntax = "proto3";
+	package protobuf_grpc;
+
+    service RouteGuide {
+        rpc SendTest(Test) returns (Reply) {}
+        rpc RunTask(Handler) returns (Result) {}
+    }
+
+    message Handler {
+        TestEnum task = 1;
+        int32 firstValue = 2;
+        int32 secondValue = 3;
+    }
+
+    enum TestEnum {
+        multiplication = 0;
+        division = 1;
+    }
+
+	message Test {
+	  string label = 1;
+	  int32 type = 2;
+	  int64 reps = 3;
+    }
+
+    message Result {
+        int32 result = 1;
+    }
+    
+    message Reply {
+        string reply = 1;
+    }
